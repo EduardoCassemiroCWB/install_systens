@@ -7,7 +7,9 @@ sudo apt upgrade -y
 
 
 # Baixa o script
-curl -sSL https://github.com/EduardoCassemiroCWB/install_systens/main/SetupOrion -o SetupOrion
+curl -sSL https://raw.githubusercontent.com/EduardoCassemiroCWB/install_systens/main/SetupOrion -o SetupOrion
+
+
 
 
 # Verifica se o download foi bem-sucedido
