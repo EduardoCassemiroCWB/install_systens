@@ -12,14 +12,7 @@ curl -sSL https://raw.githubusercontent.com/EduardoCassemiroCWB/install_systens/
 
 
 
-# Verifica se o download foi bem-sucedido
-if [ $? -eq 0 ]; then
-    # Executa o script baixado
-    chmod +x SetupOrion
-    ./SetupOrion
-else
-    echo "Falha ao baixar o script SetupOrion"
-fi
+
 
 sudo apt update
 sudo apt upgrade -y
