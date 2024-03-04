@@ -2580,7 +2580,7 @@ services:
       - "--providers.docker.endpoint=unix:///var/run/docker.sock"
       - "--providers.docker.exposedbydefault=false"
       - "--providers.docker.network=$nome_rede_interna" ## Nome da rede interna
-      - "--entrypoints.web.address=:81"
+      - "--entrypoints.web.address=:80"
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
@@ -2610,8 +2610,8 @@ services:
       - "vol_certificates:/etc/traefik/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     ports:
-      - target: 81
-        published: 81
+      - target: 80
+        published: 80
         mode: host
       - target: 443
         published: 443
@@ -5994,7 +5994,7 @@ services:
       labels:
           - traefik.enable=true
           - traefik.http.routers.pgadmin.rule=Host(\`$url_PgAdmin_4\`) ## Url da Ferramenta
-          - traefik.http.services.pgadmin.loadbalancer.server.port=81
+          - traefik.http.services.pgadmin.loadbalancer.server.port=80
           - traefik.http.routers.pgadmin.service=pgadmin
           - traefik.http.routers.pgadmin.tls.certresolver=letsencryptresolver
           - traefik.http.routers.pgadmin.entrypoints=websecure
@@ -6268,7 +6268,7 @@ services:
       labels:
         - traefik.enable=true
         - traefik.http.routers.nocobase.rule=Host(\`$url_nocobase\`) ## Url da aplicação
-        - traefik.http.services.nocobase.loadbalancer.server.port=81
+        - traefik.http.services.nocobase.loadbalancer.server.port=80
         - traefik.http.routers.nocobase.service=nocobase
         - traefik.http.routers.nocobase.tls.certresolver=letsencryptresolver
         - traefik.http.routers.nocobase.entrypoints=websecure
@@ -6780,7 +6780,7 @@ services:
         - traefik.http.routers.$nome_do_servico_wordpress.entrypoints=websecure
         - traefik.http.routers.$nome_do_servico_wordpress.tls.certresolver=letsencryptresolver
         - traefik.http.routers.$nome_do_servico_wordpress.service=$nome_do_servico_wordpress
-        - traefik.http.services.$nome_do_servico_wordpress.loadbalancer.server.port=81
+        - traefik.http.services.$nome_do_servico_wordpress.loadbalancer.server.port=80
         - traefik.http.services.$nome_do_servico_wordpress.loadbalancer.passHostHeader=true
 volumes:
   $nome_da_date_wordpress:
@@ -8199,7 +8199,7 @@ services:
       labels:
         - traefik.enable=true
         - traefik.http.routers.mautic.rule=Host(\`$url_mautic\`)
-        - traefik.http.services.mautic.loadbalancer.server.port=81
+        - traefik.http.services.mautic.loadbalancer.server.port=80
         - traefik.http.routers.mautic.entrypoints=websecure
         - traefik.http.routers.mautic.tls.certresolver=letsencryptresolver
         - traefik.http.routers.mautic.service=mautic
@@ -8415,7 +8415,7 @@ services:
         - traefik.http.routers.appsmith.entrypoints=websecure
         - traefik.http.routers.appsmith.tls.certresolver=letsencryptresolver
         - traefik.http.routers.appsmith.service=appsmith
-        - traefik.http.services.appsmith.loadbalancer.server.port=81
+        - traefik.http.services.appsmith.loadbalancer.server.port=80
         - traefik.http.services.appsmith.loadbalancer.passHostHeader=true
 
 volumes:
@@ -12313,7 +12313,7 @@ services:
         - traefik.http.routers.nginx.rule=Host(\`$url_dify\`) ## Url do Dify
         - traefik.http.routers.nginx.entrypoints=websecure
         - traefik.http.routers.nginx.tls.certresolver=letsencryptresolver
-        - traefik.http.services.nginx.loadbalancer.server.port=81
+        - traefik.http.services.nginx.loadbalancer.server.port=80
         - traefik.http.services.nginx.loadbalancer.passHostHeader=true
         - traefik.http.routers.nginx.service=nginx
 
